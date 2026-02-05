@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const AddItem = () => {
   const [categories, setCategories] = useState([]);
   // 1. Updated state to hold halfPrice and fullPrice
@@ -17,7 +17,7 @@ const AddItem = () => {
 
   useEffect(() => {
     // Make sure your backend URL is correct here
-    axios.get('http://localhost:5000/api/foods/categories')
+    axios.get(`${API_BASE_URL}/api/foods/categories`)
       .then(res => setCategories(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -47,7 +47,7 @@ const AddItem = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/foods/add', formData, {
+      await axios.post(`${API_BASE_URL}/api/foods/categories/add`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'

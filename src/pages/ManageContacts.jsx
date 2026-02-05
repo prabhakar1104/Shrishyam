@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const ManageContacts = () => {
   const [contacts, setContacts] = useState([]);
@@ -8,7 +9,7 @@ const ManageContacts = () => {
   const navigate = useNavigate();
 
   const fetchContacts = async () => {
-    const res = await axios.get('http://localhost:5000/api/foods/contacts');
+    const res = await axios.get(`${API_BASE_URL}/api/foods/contacts`);
     setContacts(res.data.contacts || []);
   };
 
@@ -18,7 +19,7 @@ const ManageContacts = () => {
     e.preventDefault();
     const token = localStorage.getItem('adminToken');
     try {
-      await axios.post('http://localhost:5000/api/foods/contacts/add', { number }, {
+      await axios.post(`${API_BASE_URL}/api/foods/contacts/add`, { number }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNumber('');
@@ -31,7 +32,7 @@ const ManageContacts = () => {
   const handleDelete = async (id) => {
     const token = localStorage.getItem('adminToken');
     if (window.confirm("Delete this contact?")) {
-      await axios.delete(`http://localhost:5000/api/foods/contacts/${id}`, {
+      await axios.delete(`${API_BASE_URL}/api/foods/contacts/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchContacts();

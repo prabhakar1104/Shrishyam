@@ -8,24 +8,23 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true); // Start loading state
-    
-    try {
-      const res = await axios.post('http://localhost:5000/api/foods/login', { email, password });
-      
-      // Store the token and redirect
-      localStorage.setItem('adminToken', res.data.token);
-      navigate('/admin-panel');
-    } catch (err) {
-      console.error(err);
-      alert("Invalid credentials or server error. Please try again.");
-    } finally {
-      setLoading(false); // End loading state
-    }
-  };
+const handleLogin = async (e) => {
+  e.preventDefault();
+  setLoading(true); // Start loading state
+
+  try {
+    const res = await axios.post(`${API_BASE_URL}/api/foods/login`, { email, password });
+    localStorage.setItem('adminToken', res.data.token);
+    navigate('/admin-panel');
+  } catch (err) {
+    console.error(err);
+    alert("Invalid credentials or server error. Please try again.");
+  } finally {
+    setLoading(false); // End loading state
+  }
+};
 
   // Modern Styling Objects
   const containerStyle = {

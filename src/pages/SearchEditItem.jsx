@@ -24,7 +24,7 @@ const SearchEditItem = () => {
   const [catEditName, setCatEditName] = useState('');
 
   const navigate = useNavigate();
-  const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://restaurent-backend-h5p7.onrender.com";
 
   useEffect(() => {
     fetchData();

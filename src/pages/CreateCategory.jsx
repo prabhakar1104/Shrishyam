@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+
 const CreateCategory = () => {
   const [catName, setCatName] = useState('');
   const navigate = useNavigate();
@@ -10,7 +13,7 @@ const CreateCategory = () => {
     e.preventDefault();
     const token = localStorage.getItem('adminToken');
     try {
-      await axios.post('http://localhost:5000/api/foods/categories/add', { name: catName }, {
+      await axios.post(`${API_BASE_URL}/api/foods/categories/add`, { name: catName }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert("Category Created!");

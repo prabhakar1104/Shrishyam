@@ -8,7 +8,7 @@ const Cart = () => {
   const [ordered, setOrdered] = useState(false);
   const navigate = useNavigate();
 
-  const API_BASE_URL = "http://localhost:5000";
+ const API_BASE_URL = "https://restaurent-backend-h5p7.onrender.com";
   const adminWhatsApp = "917696952407"; // Admin phone number
 
   const totalAmount = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);

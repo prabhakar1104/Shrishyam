@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '../CartContext';
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://restaurent-backend-h5p7.onrender.com";
 
 const ItemDetail = () => {
   const { id } = useParams();

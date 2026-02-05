@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:5000/api' });
+const API = axios.create({ baseURL: 'https://restaurent-backend-h5p7.onrender.com/api' });
 
 // This helps send the Admin Token automatically if it exists
 API.interceptors.request.use((req) => {

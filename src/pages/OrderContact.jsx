@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Phone, MessageCircle, Clock, UtensilsCrossed } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
 const OrderContact = () => {
   const [contacts, setContacts] = useState([]);
@@ -9,7 +11,7 @@ const OrderContact = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/foods/contacts")
+      .get(`${API_BASE_URL}/api/foods/contacts`)
       .then((res) => setContacts(res.data.contacts || []));
   }, []);
 

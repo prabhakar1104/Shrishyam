@@ -19,7 +19,7 @@ const Dashboard = () => {
 
   const { cart, addToCart, removeFromCart } = useCart();
   const navigate = useNavigate();
-  const API_BASE_URL = "http://localhost:5000"; 
+   const API_BASE_URL = "https://restaurent-backend-h5p7.onrender.com";
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
